@@ -5,7 +5,17 @@ public class ZarzadzanieFasada {
 
 	Uzytkownik znajdzUzytkownika(ArrayList<String> daneUzytkownika) {
 		Uzytkownik uzytkownik = new Uzytkownik();
-		uzytkownik
-		return uzytkownik;
+		uzytkownik.setImiê(daneUzytkownika.get(0));
+		uzytkownik.setNazwisko(daneUzytkownika.get(1));
+		uzytkownik.setMiasto(daneUzytkownika.get(2));
+		uzytkownik.setAdres(daneUzytkownika.get(3));
+		uzytkownik.setNumerTelefonu((new Integer(daneUzytkownika.get(4)).intValue()));
+		uzytkownik.setPesel((new Integer(daneUzytkownika.get(5)).intValue()));
+		for(Uzytkownik u : uzytkownicy){
+			if(u.equals(uzytkownik)){
+				return u;
+			}
+		}
+		return null;
 	}
 }
