@@ -6,6 +6,14 @@ public class Uzytkownik {
 	private String adres;
 	private int pesel;
 	private int numerTelefonu;
+	private boolean mozeRezerwowac;
+	
+	public boolean czyMozeRezerwowac() {
+		return mozeRezerwowac;
+	}
+	public void setMozeRezerwowac(boolean mozeRezerwowac) {
+		this.mozeRezerwowac = mozeRezerwowac;
+	}
 	public String getImiê() {
 		return imiê;
 	}

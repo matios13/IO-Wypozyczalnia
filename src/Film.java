@@ -1,10 +1,31 @@
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Film {
 	private String nazwa;
 	private String rezyser;
 	private String gatunek;
 	private String krajProdukcji;
+	private Klasa klasa;
+	
 	private int rokProdukcji;
 	private int czasTrwania;
+	ArrayList<Pozycja> pozycje = new ArrayList<Pozycja>();
+	
+	public Pozycja znajdzDostepnaPozycje(Date data){
+		Date dataKonca = new Date();
+		dataKonca.setTime(data.getTime()+(klasa.getLiczbaDni()*86400000));
+		for(Pozycja pozycja : pozycje){			
+			if (pozycja.getWypozyczenie()!= null)
+				continue;
+			for(Rezerwacja rezerwacja : pozycja.getRezerwacja()){
+				if(rezerwacja.getDataKonca().compareTo(data)<0||rezerwacja.getDataPoczatku().compareTo(dataKonca)>0){
+					return pozycja;
+				}
+			}
+		}
+		return null;
+	}
 
 	public String getNazwa() {
 		return nazwa;
@@ -53,10 +74,27 @@ public class Film {
 	public void setCzasTrwania(int czasTrwania) {
 		this.czasTrwania = czasTrwania;
 	}
+	
+	public Klasa getKlasa() {
+		return klasa;
+	}
+
+	public void setKlasa(Klasa klasa) {
+		this.klasa = klasa;
+	}
+
+	public ArrayList<Pozycja> getPozycje() {
+		return pozycje;
+	}
+
+	public void setPozycje(ArrayList<Pozycja> pozycje) {
+		this.pozycje = pozycje;
+	}
+
 
 	@Override
 	public boolean equals(Object o) {
-		if (((Film) o).getNazwa().equals(nazwa))
+		if (((Film) o).getNazwa().equals(nazwa)&&((Film) o).getRokProdukcji()==rokProdukcji)
 			return true;
 
 		return false;
