@@ -72,7 +72,10 @@ public class Uzytkownik {
 	public void setRezerwacje(ArrayList<Rezerwacja> rezerwacje) {
 		this.rezerwacje = rezerwacje;
 	}
-
+	public void addRezerwacja(Rezerwacja rezerwacja){
+		rezerwacja.setUzytkownik(this);
+		rezerwacje.add(rezerwacja);
+	}
 
 	@Override
 	public boolean equals(Object o){

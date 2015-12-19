@@ -8,12 +8,12 @@ public class Pozycja {
 	private int id;
 	private Wypozyczenie wypozyczenie;
 	private Film film;
-	private ArrayList<Rezerwacja> rezerwacja = new ArrayList<Rezerwacja>();
+	private ArrayList<Rezerwacja> rezerwacje = new ArrayList<Rezerwacja>();
 
 	public boolean czyDostepna(Date data, Date dataKonca){
 		if (wypozyczenie!= null && wypozyczenie.getKoniec().compareTo(data)>0)
 			return false;
-		for(Rezerwacja r : rezerwacja){
+		for(Rezerwacja r : rezerwacje){
 			if(r.getDataKonca().compareTo(data)<0||r.getDataPoczatku().compareTo(dataKonca)>0){
 				return true;
 			}
@@ -27,7 +27,10 @@ public class Pozycja {
 	public void setFilm(Film film) {
 		this.film = film;
 	}
-
+	public void addRezerwacja(Rezerwacja rezerwacja){
+		rezerwacja.setPozycja(this);
+		rezerwacje.add(rezerwacja);
+	}
 	
 	public String getNosnik() {
 		return nosnik;
@@ -49,10 +52,10 @@ public class Pozycja {
 		this.wypozyczenie = wypozyczenie;
 	}
 	public ArrayList<Rezerwacja> getRezerwacja() {
-		return rezerwacja;
+		return rezerwacje;
 	}
 	public void setRezerwacja(ArrayList<Rezerwacja> rezerwacja) {
-		this.rezerwacja = rezerwacja;
+		this.rezerwacje = rezerwacja;
 	}
 	
 }
