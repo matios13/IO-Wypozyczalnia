@@ -3,12 +3,14 @@ package main;
 import java.util.ArrayList;
 import java.util.Date;
 
+
 public class FilmyFasada {
 	private ArrayList<Film> filmy = new ArrayList<Film>();
 	private ArrayList<Klasa> klasy = new ArrayList<Klasa>();
 	private ArrayList<Pozycja> pozycje = new ArrayList<Pozycja>();
 	private ArrayList<Wypozyczenie> wypozyczenia = new ArrayList<Wypozyczenie>();
 	private ArrayList<Rezerwacja> rezerwacje = new ArrayList<Rezerwacja>();
+
 	
 	private RezerwacjaFabryka rezerwacjaFabryka = new RezerwacjaFabryka();
 	public Rezerwacja dodajRezerwacjeFilmu(Uzytkownik uzytkownik,
@@ -24,6 +26,7 @@ public class FilmyFasada {
 				film=f;
 				znaleziono=true;
 				break;
+
 			}
 		}
 		if(!znaleziono)
